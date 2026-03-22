@@ -75,67 +75,63 @@ export function DashboardHeader({
               </button>
             ))}
           </div>
-
-          <Popover open={open} onOpenChange={setOpen}>
-            <PopoverTrigger
-              render={
-                <Button
-                  variant="outline"
-                  role="combobox"
-                  aria-expanded={open}
-                  className="w-full min-w-0 justify-between sm:w-[300px]"
-                />
-              }
-            >
-              <span className="truncate">
-                {selected.size === 0
-                  ? "Select models..."
-                  : `${selected.size} model${selected.size > 1 ? "s" : ""} selected`}
-              </span>
-              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-            </PopoverTrigger>
-            <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0 sm:w-[300px]">
-              <Command>
-                <CommandInput placeholder="Search models..." />
-                <CommandList>
-                  <CommandEmpty>No models found.</CommandEmpty>
-                  <CommandGroup>
-                    {models.map((m) => (
-                      <CommandItem
-                        key={m.model}
-                        value={m.model}
-                        onSelect={() => toggleModel(m.model)}
-                      >
-                        <div className="flex flex-1 items-center gap-2">
-                          <div
-                            className={`flex h-4 w-4 items-center justify-center rounded-sm border ${
-                              selected.has(m.model)
-                                ? "border-primary bg-primary text-primary-foreground"
-                                : "border-muted-foreground/30"
-                            }`}
-                          >
-                            {selected.has(m.model) && <Check className="h-3 w-3" />}
-                          </div>
-                          <span
-                            className="h-2.5 w-2.5 shrink-0 rounded-full"
-                            style={{ backgroundColor: modelColors[m.model] }}
-                          />
-                          <div className="flex min-w-0 flex-col">
-                            <span className="text-sm">{m.short_name}</span>
-                            <span className="text-muted-foreground truncate font-mono text-xs">
-                              {m.model}
-                            </span>
-                          </div>
-                        </div>
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                </CommandList>
-              </Command>
-            </PopoverContent>
-          </Popover>
         </div>
       </div>
+
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger
+          render={
+            <Button
+              variant="outline"
+              role="combobox"
+              aria-expanded={open}
+              className="w-full justify-between sm:w-[300px]"
+            />
+          }
+        >
+          <span className="truncate">
+            {selected.size === 0
+              ? "Select models..."
+              : `${selected.size} model${selected.size > 1 ? "s" : ""} selected`}
+          </span>
+          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+        </PopoverTrigger>
+        <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0">
+          <Command>
+            <CommandInput placeholder="Search models..." />
+            <CommandList>
+              <CommandEmpty>No models found.</CommandEmpty>
+              <CommandGroup>
+                {models.map((m) => (
+                  <CommandItem key={m.model} value={m.model} onSelect={() => toggleModel(m.model)}>
+                    <div className="flex flex-1 items-center gap-2">
+                      <div
+                        className={`flex h-4 w-4 items-center justify-center rounded-sm border ${
+                          selected.has(m.model)
+                            ? "border-primary bg-primary text-primary-foreground"
+                            : "border-muted-foreground/30"
+                        }`}
+                      >
+                        {selected.has(m.model) && <Check className="h-3 w-3" />}
+                      </div>
+                      <span
+                        className="h-2.5 w-2.5 shrink-0 rounded-full"
+                        style={{ backgroundColor: modelColors[m.model] }}
+                      />
+                      <div className="flex min-w-0 flex-col">
+                        <span className="text-sm">{m.short_name}</span>
+                        <span className="text-muted-foreground truncate font-mono text-xs">
+                          {m.model}
+                        </span>
+                      </div>
+                    </div>
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            </CommandList>
+          </Command>
+        </PopoverContent>
+      </Popover>
 
       {selectedArray.length > 0 && (
         <div className="flex flex-wrap gap-2">
