@@ -37,12 +37,12 @@ export function Logo({ className }: { className?: string }) {
           y1={CY}
           x2={r.x2}
           y2={r.y2}
-          stroke="#c2410c"
+          stroke="var(--brand)"
           strokeWidth={3.5}
           strokeLinecap="round"
         />
       ))}
-      <circle cx={CX} cy={CY} r={2} fill="#c2410c" />
+      <circle cx={CX} cy={CY} r={2} fill="var(--brand)" />
     </svg>
   );
 }

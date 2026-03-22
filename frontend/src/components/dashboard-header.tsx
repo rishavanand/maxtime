@@ -53,7 +53,7 @@ export function DashboardHeader({
           <h1 className="flex items-center gap-2 text-3xl font-bold tracking-tight">
             <Logo className="h-8 w-8" />
             <span>
-              <span className="text-[#c2410c]">Max</span>Time
+              <span className="text-brand">Max</span>Time
             </span>
           </h1>
           <p className="text-muted-foreground text-sm">Claude TTFS monitor — {rangeLabel}</p>
