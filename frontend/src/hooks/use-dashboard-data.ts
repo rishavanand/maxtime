@@ -61,17 +61,24 @@ export function useDashboardData(): DashboardData {
 
   useEffect(() => {
     if (models.length === 0) return;
-    const end = new Date();
-    const allIds = models.map((x) => x.model);
-    fetchMetrics(allIds, rangeStart, end)
-      .then((data) => {
-        setAllMetrics(data.metrics);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoading(false);
-      });
+
+    const load = () => {
+      const end = new Date();
+      const allIds = models.map((x) => x.model);
+      fetchMetrics(allIds, rangeStart, end)
+        .then((data) => {
+          setAllMetrics(data.metrics);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.error(err);
+          setLoading(false);
+        });
+    };
+
+    load();
+    const interval = setInterval(load, 30_000);
+    return () => clearInterval(interval);
   }, [models, rangeStart]);
 
   const toggleModel = useCallback((modelId: string) => {
