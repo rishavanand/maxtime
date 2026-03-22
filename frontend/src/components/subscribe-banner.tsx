@@ -12,9 +12,9 @@ export function SubscribeBanner() {
 
   if (subscribed) {
     return (
-      <div className="sticky top-0 z-50 w-full bg-emerald-500 px-6 text-white md:px-10">
+      <div className="sticky top-0 z-50 w-full bg-emerald-500 px-4 text-white sm:px-6 md:px-10">
         <div className="mx-auto flex max-w-6xl items-center justify-center gap-2 py-1.5">
-          <span className="text-sm font-medium">
+          <span className="text-center text-sm font-medium">
             Subscribed! We&apos;ll notify you at {email} when latency changes.
           </span>
         </div>
@@ -23,13 +23,11 @@ export function SubscribeBanner() {
   }
 
   return (
-    <div className="sticky top-0 z-50 w-full bg-orange-700 px-6 text-white md:px-10">
-      <div className="mx-auto flex max-w-6xl items-center py-1.5">
-        <span className="shrink-0 text-sm font-medium">
-          Latency spike? We&apos;ll alert you — grab a coffee while it sorts out —
-        </span>
+    <div className="sticky top-0 z-50 w-full bg-orange-700 px-4 text-white sm:px-6 md:px-10">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-2 py-1.5">
+        <span className="text-sm font-medium">Latency spike? We&apos;ll alert you —</span>
         <form
-          className="flex shrink-0 items-center gap-2"
+          className="flex items-center gap-2"
           onSubmit={(e) => {
             e.preventDefault();
             if (email.trim()) setSubscribed(true);
@@ -40,7 +38,7 @@ export function SubscribeBanner() {
             placeholder="you@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="h-7 w-52 border-orange-900/30 bg-white/90 text-xs text-black placeholder:text-black/40 focus-visible:ring-orange-900"
+            className="h-7 w-40 border-orange-900/30 bg-white/90 text-xs text-black placeholder:text-black/40 focus-visible:ring-orange-900 sm:w-52"
           />
           <Button
             type="submit"
@@ -50,15 +48,16 @@ export function SubscribeBanner() {
             Subscribe
           </Button>
         </form>
-        <div className="flex-1" />
+        <div className="hidden flex-1 sm:block" />
         <a
           href="https://github.com/rishavanand/maxtime"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex shrink-0 items-center gap-1.5 text-sm font-medium hover:underline"
+          className="ml-auto flex shrink-0 items-center gap-1.5 text-sm font-medium hover:underline sm:ml-0"
         >
           <Github className="h-3.5 w-3.5" />
-          Love on GitHub
+          <span className="hidden sm:inline">Love on GitHub</span>
+          <span className="sm:hidden">GitHub</span>
         </a>
       </div>
     </div>

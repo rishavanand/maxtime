@@ -84,15 +84,15 @@ export function TtftChart({
       </CardHeader>
       <CardContent className="pt-4">
         {loading ? (
-          <div className="text-muted-foreground flex h-[420px] items-center justify-center">
+          <div className="text-muted-foreground flex h-[280px] items-center justify-center sm:h-[420px]">
             Loading...
           </div>
         ) : chartData.length === 0 ? (
-          <div className="text-muted-foreground flex h-[420px] items-center justify-center">
+          <div className="text-muted-foreground flex h-[280px] items-center justify-center sm:h-[420px]">
             No data available
           </div>
         ) : (
-          <ChartContainer config={chartConfig} className="h-[420px] w-full">
+          <ChartContainer config={chartConfig} className="h-[280px] w-full sm:h-[420px]">
             <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
               <defs>
                 {selectedArray.map((model) => (

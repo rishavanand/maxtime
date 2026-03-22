@@ -48,10 +48,10 @@ export function DashboardHeader({
 
   return (
     <>
-      <div className="flex items-end justify-between gap-4">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="flex items-center gap-2 text-3xl font-bold tracking-tight">
-            <Logo className="h-8 w-8" />
+          <h1 className="flex items-center gap-2 text-2xl font-bold tracking-tight sm:text-3xl">
+            <Logo className="h-7 w-7 sm:h-8 sm:w-8" />
             <span>
               <span className="text-brand">Max</span>Time
             </span>
@@ -83,16 +83,18 @@ export function DashboardHeader({
                   variant="outline"
                   role="combobox"
                   aria-expanded={open}
-                  className="w-[300px] justify-between"
+                  className="w-full min-w-0 justify-between sm:w-[300px]"
                 />
               }
             >
-              {selected.size === 0
-                ? "Select models..."
-                : `${selected.size} model${selected.size > 1 ? "s" : ""} selected`}
+              <span className="truncate">
+                {selected.size === 0
+                  ? "Select models..."
+                  : `${selected.size} model${selected.size > 1 ? "s" : ""} selected`}
+              </span>
               <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             </PopoverTrigger>
-            <PopoverContent className="w-[300px] p-0" align="end">
+            <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0 sm:w-[300px]">
               <Command>
                 <CommandInput placeholder="Search models..." />
                 <CommandList>
@@ -118,9 +120,9 @@ export function DashboardHeader({
                             className="h-2.5 w-2.5 shrink-0 rounded-full"
                             style={{ backgroundColor: modelColors[m.model] }}
                           />
-                          <div className="flex flex-col">
+                          <div className="flex min-w-0 flex-col">
                             <span className="text-sm">{m.short_name}</span>
-                            <span className="text-muted-foreground font-mono text-xs">
+                            <span className="text-muted-foreground truncate font-mono text-xs">
                               {m.model}
                             </span>
                           </div>

@@ -28,7 +28,7 @@ export default function Home() {
     <div className="bg-background min-h-screen">
       <SubscribeBanner />
 
-      <div className="p-6 md:p-10">
+      <div className="p-4 sm:p-6 md:p-10">
         <div className="mx-auto max-w-6xl space-y-6">
           <DashboardHeader
             range={range}
