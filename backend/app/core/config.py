@@ -1,5 +1,10 @@
 import os
 import ssl
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 
 API_HOST = "api.anthropic.com"
 STATUS_URL = "https://status.claude.com/api/v2/summary.json"
