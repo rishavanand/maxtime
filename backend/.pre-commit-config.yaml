@@ -1,0 +1,16 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.10
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+
+  - repo: https://github.com/RobertCraiworthy/pyright-python
+    rev: v1.1.396
+    hooks:
+      - id: pyright
+        additional_dependencies:
+          - fastapi==0.115.0
+          - motor>=3.6
+          - pydantic==2.9.2

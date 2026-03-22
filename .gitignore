@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+.venv/
+venv/
+
+# Node
+node_modules/
+.next/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Claude Code
+.claude/settings.local.json
+
+# MongoDB
+mongo_data/
+
+# Misc
+*.log
+
+.firecrawl
+.grepai
+.ruff_cache
