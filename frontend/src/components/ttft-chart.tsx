@@ -113,10 +113,10 @@ export function TtftChart({
                 tickFormatter={(v: string) => {
                   if (range === "24h") {
                     const d = new Date(v + ":00:00");
-                    return d.toLocaleTimeString("en-US", { hour: "numeric", hour12: true });
+                    return d.toLocaleTimeString(undefined, { hour: "numeric", hour12: true });
                   }
-                  const d = new Date(v + "T00:00:00");
-                  return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+                  const d = new Date(v + "T12:00:00");
+                  return d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
                 }}
                 tickLine={false}
                 axisLine={false}
@@ -137,15 +137,15 @@ export function TtftChart({
                     labelFormatter={(v: string) => {
                       if (range === "24h") {
                         const d = new Date(v + ":00:00");
-                        return d.toLocaleString("en-US", {
+                        return d.toLocaleString(undefined, {
                           weekday: "short",
                           hour: "numeric",
                           minute: "2-digit",
                           hour12: true,
                         });
                       }
-                      const d = new Date(v + "T00:00:00");
-                      return d.toLocaleDateString("en-US", {
+                      const d = new Date(v + "T12:00:00");
+                      return d.toLocaleDateString(undefined, {
                         weekday: "short",
                         month: "long",
                         day: "numeric",
